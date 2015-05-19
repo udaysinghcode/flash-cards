@@ -1,5 +1,4 @@
 app.controller('MainController', function ($scope, FlashCardsFactory, ScoreFactory) {
-	$scope.loaded = false;
 
 	$scope.categories = [
     'MongoDB',
@@ -9,7 +8,6 @@ app.controller('MainController', function ($scope, FlashCardsFactory, ScoreFacto
 	];
 
 	FlashCardsFactory.getFlashCards().then(function (data) {
-		$scope.loaded = true;
 		$scope.flashCards = data;
 	})
 
@@ -23,9 +21,7 @@ app.controller('MainController', function ($scope, FlashCardsFactory, ScoreFacto
 
 	$scope.getCategoryCards = function(category) {
 		$scope.currentCategory = category;
-		$scope.loaded = false;
 		FlashCardsFactory.getFlashCards(category).then(function(data) {
-			$scope.loaded = true;
 			$scope.flashCards = data;
 			console.log(data);
 		})
